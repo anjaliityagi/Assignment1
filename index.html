@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neptune - My Documents</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="layout-container">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="brand-logo">
+            <img
+              src="assets/icons/Union.svg"
+              alt="Neptune Logo"
+              class="logo-img"
+            />
+          </div>
+
+          <div class="profile-box">
+            <img src="assets/icons/Group 79 (1).svg" class="avatar" />
+            <div class="profile-text">
+              <span class="name">Jessica Thompson</span>
+              <span class="role">Primary User</span>
+            </div>
+            <img
+              class="logout-icon"
+              id="logout-icon"
+              src="assets/icons/Icon Right.svg"
+              alt="Expand Profile"
+            />
+          </div>
+          <div>
+            <button class="logout-btn" id="logout-btn">
+              <i class="fas fa-sign-out"></i> Logout
+            </button>
+          </div>
+
+          <nav class="nav-links">
+            <a href="#" class="nav-item"
+              ><img src="assets/icons/home 1.svg" alt="Home" /> Home</a
+            >
+            <a href="#" class="nav-item active"
+              ><img src="assets/icons/file-text 1 (2).svg" alt="Documents" />
+              Documents</a
+            >
+            <a href="#" class="nav-item"
+              ><img src="assets/icons/message-circle 1 (1).svg" alt="Chat" />
+              Chat with Neptune</a
+            >
+            <a href="#" class="nav-item"
+              ><img src="assets/icons/help-circle 1 (1).svg" alt="Help" />
+              Help</a
+            >
+            <a href="#" class="nav-item"
+              ><img src="assets/icons/settings 1 (1).svg" alt="Settings" />
+              Settings</a
+            >
+          </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="contact-card">
+            <img src="assets/icons/phone 1.svg" alt="" />
+            <h3>Having trouble?</h3>
+            <p>
+              Feel free to contact us and we will always help you through the
+              process.
+            </p>
+            <button class="contact-btn">Contact us</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <div class="top-breadcrumb">
+          Home <span class="sep">&rsaquo;</span>
+          <span class="muted">Documents</span>
+        </div>
+
+        <div class="page-title-row">
+          <div class="page-title">
+            <h1>My Documents</h1>
+          </div>
+          <div class="search-bar">
+            <span class="add-side"
+              ><button class="add-btn" id="addDocBtn">
+                Add Document
+              </button></span
+            >
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search documents"
+            />
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+
+        <div class="doc-list">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>
+                  <input type="checkbox" />
+                  <i class="fas fa-chevron-down small-arrow"></i>
+                </th>
+                <th>Document Name</th>
+                <th>Status</th>
+                <th>Last Modified</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="docTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="modal-overlay" id="modalOverlay">
+          <div class="modal">
+            <h2>Add Document</h2>
+
+            <label>Document Name</label>
+            <input type="text" id="docName" />
+
+            <label>Status</label>
+            <select id="docStatus">
+              <option value="Needs Signing">Needs Signing</option>
+              <option value="Pending">Pending</option>
+              <option value="Completed">Completed</option>
+            </select>
+            <div id="waitingWrapper" style="display: none">
+              <label>No. of people waiting</label>
+              <input
+                type="number"
+                id="waitingCount"
+                min="1"
+                placeholder="Eg: 3"
+              />
+            </div>
+
+            <label>Date & Time</label>
+            <input type="datetime-local" id="docDateTime" />
+
+            <label>Upload File</label>
+            <input type="file" id="docFile" />
+
+            <div class="modal-actions">
+              <button class="cancel-btn" id="cancelBtn">Cancel</button>
+              <button class="save-btn" id="saveBtn">Save</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/dist/script.js" ></script>
+  </body>
+</html>
