@@ -1,4 +1,3 @@
-"use strict";
 window.addEventListener("DOMContentLoaded", () => {
     alert("JS LOADED");
     const addBtn = document.getElementById("addDocBtn");
@@ -206,5 +205,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+    refreshTable();
 });
+export {};
 //# sourceMappingURL=script.js.map

@@ -256,6 +256,7 @@ searchInput.addEventListener("input", () => {
   });
 }); 
 
+refreshTable();
 
 
    
