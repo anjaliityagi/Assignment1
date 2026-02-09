@@ -1,5 +1,4 @@
 window.addEventListener("DOMContentLoaded", () => {
-    alert("JS LOADED");
     const addBtn = document.getElementById("addDocBtn");
     const modal = document.getElementById("modalOverlay");
     const cancelBtn = document.getElementById("cancelBtn");
@@ -10,6 +9,12 @@ window.addEventListener("DOMContentLoaded", () => {
     const logoutIcon = document.getElementById("logout-icon");
     const docTableBody = document.getElementById("docTableBody");
     let editIndex = null;
+    let Status;
+    (function (Status) {
+        Status["Pending"] = "Pending";
+        Status["NeedsSigning"] = "Needs Signing";
+        Status["Completed"] = "Completed";
+    })(Status || (Status = {}));
     logoutIcon.addEventListener("click", (e) => {
         if (logoutBtn.style.display === "flex") {
             logoutBtn.style.display = "none";
@@ -118,6 +123,7 @@ window.addEventListener("DOMContentLoaded", () => {
             waitingCount = Number(waitingCountInput.value);
             if (isNaN(waitingCount) || waitingCount < 1) {
                 alert("Waiting count must be at least 1");
+                return;
             }
             if (!waitingCount) {
                 alert("Enter number of people waiting!");

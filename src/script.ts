@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => { 
     
-    alert("JS LOADED");
-    const addBtn=document.getElementById("addDocBtn") as HTMLButtonElement;
+   
+const addBtn=document.getElementById("addDocBtn") as HTMLButtonElement;
 const modal=document.getElementById("modalOverlay") as  HTMLDivElement;
 const cancelBtn=document.getElementById("cancelBtn") as HTMLButtonElement;
 const docName=document.getElementById("docName") as HTMLInputElement;
@@ -12,12 +12,20 @@ const logoutIcon=document.getElementById("logout-icon") as HTMLElement;
 const docTableBody=document.getElementById("docTableBody")as HTMLTableSectionElement;
 let editIndex:null|number=null;
 
+
+enum Status {
+  Pending ="Pending",
+  NeedsSigning ="Needs Signing",
+  Completed ="Completed"
+}
+
 interface DocumentItem{
     name:string;
     dateTime:string;
-    status:"Pending"|"Needs Signing"|"Completed";
+    status:Status;
     waitingCount?:number | undefined;
 }
+
 
 logoutIcon.addEventListener("click",(e)=>{
     if(logoutBtn.style.display==="flex") {
@@ -129,11 +137,12 @@ if (doc.status === "Pending" && doc.waitingCount) {
     docTableBody.appendChild(row);
 }
 
+
 const saveBtn = document.getElementById("saveBtn") as HTMLButtonElement;
 
 saveBtn.addEventListener("click", () => {
     const name = docName.value.trim();
-    const status= docStatus.value as "Pending"|"Needs Signing"|"Completed"  ;
+    const status= docStatus.value as Status ;
     const dateTime = docDateTime.value;
    let waitingCount:number |undefined;
     if (!name||!status||!dateTime) {
@@ -146,6 +155,7 @@ saveBtn.addEventListener("click", () => {
           
     if (isNaN(waitingCount) || waitingCount<1) {
         alert("Waiting count must be at least 1");
+        return;
         
     }
         if (!waitingCount) {
